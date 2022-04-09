@@ -1,0 +1,5 @@
+<ul>
+  <%= for thread <- @threads do %>
+    <li><%= link thread.title, to: Routes.thread_post_path(@conn, :index, thread.id) %></li>
+  <% end %>
+</ul>

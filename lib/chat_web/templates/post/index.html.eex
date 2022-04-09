@@ -1,0 +1,19 @@
+<h1><%= @thread.title %></h1>
+<ul id="messages">
+  <%= for post <- @posts do %>
+    <li>
+      <%= "#{post.number} #{post.name} #{format_datetime(post.inserted_at)}" %>
+      <br>
+      <p>
+        <%= for split_body <- String.split(post.body, "\n") do %>
+          <%= split_body %>
+          <br>
+        <% end %>
+      </p>
+    </li>
+  <% end %>
+</ul>
+<input type="hidden" id="thread-id" value="<%= @thread.id %>">
+<input id="name-input">
+<textarea id="chat-input"></textarea>
+<input id="send-button" type="button" value="送信">
